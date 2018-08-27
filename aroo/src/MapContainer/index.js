@@ -17,6 +17,7 @@ fetchPlaces(mapProps, map) {
 }
 
 
+
   render(){
     const style = {
       width: '500px',
