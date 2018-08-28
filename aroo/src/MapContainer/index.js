@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
+import ParksList from '../ParksList';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class MapContainer extends Component {
-  constructor(){
-    super();
-    this.state = {
-      parks: []
-    }
+
+
+  fetchPlaces(mapProps, map) {
+    const {google} = mapProps;
+    const service = new google.maps.places.PlacesService(map);
   }
-
-
-
-fetchPlaces(mapProps, map) {
-  const {google} = mapProps;
-  const service = new google.maps.places.PlacesService(map);
-}
-
 
 
   render(){
