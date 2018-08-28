@@ -43,7 +43,7 @@ class MapContainer extends Component {
         }}
         onReady={this.fetchPlaces}
         visible={true}
-        zoom={4}
+        zoom={11}
         onClick={this.onMapClicked}>
           {parkMarkers}
       </Map>
