@@ -39,20 +39,35 @@ class App extends Component {
   }
 
 
-
+// try a ternary with parkslist -- only append if parkslist has values
   render() {
     return (
       <div className='app'>
+
         <div className='mapContainer'>
           <MapContainer map={this.map} />
         </div>
+
         <div className='parkContainer'>
           <h1>Dog parks in your area: </h1>
           <ParksList parks={this.state.parks} />
         </div>
+        
       </div>
     );
   }
 }
 
 export default App;
+
+// {this.state.editedPlace.id === "" ? null :  <EditPlace placeToEdit={this.state.editedPlace.destination } editPlace={this.editPlace}/>}
+
+// {this.state.getParks.id == "" ? null : <ParksList parks={this.state.getParks.____} getParks={this.____}/>}
+
+
+
+
+
+
+
+
