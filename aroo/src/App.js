@@ -19,7 +19,7 @@ class App extends Component {
 
   getParks = async () => {
     try {
-      const parks = await fetch('http://localhost:9000/parks/search/iuhiuhiuh')
+      const parks = await fetch('http://localhost:9000/parks/search/parklocation')
       const parksJson = await parks.json();
       console.log(parksJson, ' this is parks')
       return parksJson
@@ -49,7 +49,7 @@ class App extends Component {
         </div>
 
         <div className='mapContainer'>
-          <MapContainer map={this.map} />
+          <MapContainer parks={this.state.parks} map={this.map} />
         </div>
 
         

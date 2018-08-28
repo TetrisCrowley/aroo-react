@@ -12,10 +12,28 @@ class MapContainer extends Component {
 
 
   render(){
+    console.log(this.props, ' this is the map thingy')
     const style = {
       width: '500px',
       height: '500px'
     }
+
+
+    const parkMarkers = this.props.parks.map((park, i) => {
+      // console.log(park.coordinates.latitude, park.coordinates.longitude)
+      return(
+        <Marker 
+          key={i}
+          name={park.name}
+          position={{
+            lat: park.coordinates.latitude,
+            lng: park.coordinates.longitude
+          }}
+        />
+      )
+    })
+
+
     return(
       <Map google={this.props.google}
         style={style}
@@ -25,12 +43,9 @@ class MapContainer extends Component {
         }}
         onReady={this.fetchPlaces}
         visible={true}
-        zoom={2}
+        zoom={4}
         onClick={this.onMapClicked}>
-   
-        <Marker 
-          onClick={this.onMarkerClick}
-          name={'Current location'} />
+          {parkMarkers}
       </Map>
     );
   }
