@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ParksList from './ParksList';
 import MapContainer from './MapContainer';
+// import InfoWindow from './InfoWindow';
 
 class App extends Component {
   constructor(){
@@ -101,9 +102,7 @@ class App extends Component {
 
 export default App;
 
-// {this.state.editedPlace.id === "" ? null :  <EditPlace placeToEdit={this.state.editedPlace.destination } editPlace={this.editPlace}/>}
 
-// {this.state.getParks.id == "" ? null : <ParksList parks={this.state.getParks.____} getParks={this.____}/>}
 
 
 

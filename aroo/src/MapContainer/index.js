@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ParksList from '../ParksList';
-import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 
 class MapContainer extends Component {
 
@@ -29,6 +29,11 @@ class MapContainer extends Component {
             lng: park.coordinates.longitude,
           }}
         />
+          // {this.state.isOpen === i ?
+          //     <InfoWindow onCloseClick={this.handleToggleOpen}>
+          //         <h4>{event.name}</h4>
+          //     </InfoWindow> : null
+          // }
       )
     })
 

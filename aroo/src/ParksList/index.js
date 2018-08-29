@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import InfoWindow from '../InfoWindow';
 
 const ParksList = (props) => {
 
@@ -14,15 +15,35 @@ const ParksList = (props) => {
   })
   // parksList is now an array of JSX elements and can be rendered inside {} below
 
+  // noResults(props){
+  //   if(props.noResults){
+  //     return
+  //   }
+  // }
+
+
+  // const My404 = () => {
+  //   return (
+  //     <div>
+  //       You dun goofed
+  //     </div>
+  //   )
+  // }
+  //     <Route component={My404}/>
+
   return(
-    <div>
+    <div id="results">
       <h1>Dog parks in your area: </h1>
-      <ul>
+      <ol>
         {parksList}
-      </ul>
+      </ol>
+
     </div>
   )
 }
+      // <div id="error">
+        // <h3>Sorry! No parks found. Please try again or enter a valid zip code</h3>
+      // </div>
 
 
 export default ParksList
