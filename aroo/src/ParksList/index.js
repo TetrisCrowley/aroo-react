@@ -9,14 +9,14 @@ const ParksList = (props) => {
     console.log(park)
 
     // this will be the JSX element corresponding to ONE --ONE-----ONE ONE ONE park
-    return <li key={i}>{park.name}, {park.location.display_address}</li>
+    return <li key={i}>{park.name}, {park.location.address1}, {park.location.city}, {park.location.state} {park.location.zip_code}</li>
 
   })
   // parksList is now an array of JSX elements and can be rendered inside {} below
 
   return(
     <div>
-      <h4>Parks</h4>
+      <h1>Dog parks in your area: </h1>
       <ul>
         {parksList}
       </ul>

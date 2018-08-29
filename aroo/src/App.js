@@ -10,13 +10,16 @@ class App extends Component {
     this.state = {
       userId: '',
       userLocation: '',
-      parks: []
+      parks: [],
+      lat: 37.09024,
+      lng: -95.712891,
+      zoom: 3.8
       // loggedIn: false
     }
   }
 
-// show route with parks/userInput
 
+  // adjust the map
   handleSubmit = async (e) => {
     e.preventDefault()
     console.log(this.state.userLocation)
@@ -30,7 +33,12 @@ class App extends Component {
       const parks = await fetch('http://localhost:9000/parks/search/' + parklocation)
       const parksJson = await parks.json();
       console.log(parksJson, ' this is parksJson')
-      this.setState({parks: parksJson.businesses})
+      this.setState({
+        parks: parksJson.businesses,
+        lat: parksJson.businesses[0].coordinates.latitude,
+        lng: parksJson.businesses[0].coordinates.longitude,
+        zoom: 12
+      })
     } catch(err) {
         console.log(err, 'error in catch block')
         return err 
@@ -41,7 +49,7 @@ class App extends Component {
 
 
   componentDidMount(){
-    this.getParks()
+    // this.getParks()
     // .then((data) => {
     //   console.log(data, 'this is data in componentDidMount in App')
     //   this.setState({parks: data.businesses})
@@ -58,34 +66,38 @@ class App extends Component {
 
 
 
-// try a ternary with parkslist -- only append if parkslist has values??
-
-// For search - need to set a default, get it to concatenate with api
-// Take user input, save as variable, then concatenate
   render() {
     return (
       <div className='app'>
 
         <form className='search' onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} type='search' value={this.state.parks.location} placeholder='Enter City or Zip' />
-          <button>Search</button>
+          <button>Fetch!</button>
         </form>
 
 
         <div className='parkContainer'>
-          <h1>Dog parks in your area: </h1>
+          <h4>When visiting your local dog park, please follow the posted rules. Each park's individually posted rules and regulations will help keep dog parks safe and open/available to all dogs.</h4>
           <ParksList parks={this.state.parks} />
         </div>
 
 
         <div className='mapContainer'>
-          <MapContainer parks={this.state.parks} map={this.map} />
+          <MapContainer 
+            parks={this.state.parks} 
+            map={this.map} 
+            lat={this.state.lat}
+            lng={this.state.lng}
+            zoom={this.state.zoom}
+          />
         </div>
         
       </div>
     );
   }
 }
+
+
 
 export default App;
 
