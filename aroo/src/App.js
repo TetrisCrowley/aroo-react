@@ -15,34 +15,44 @@ class App extends Component {
     }
   }
 
+// show route with parks/userInput
 
-  getParks = async () => {
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log(this.state.userLocation)
+    this.getParks(this.state.userLocation)
+  }
+
+
+  getParks = async (parklocation) => {
     try {
-      const parks = await fetch('http://localhost:9000/parks/search/parklocation')
+      console.log('http://localhost:9000/parks/search/' + parklocation)
+      const parks = await fetch('http://localhost:9000/parks/search/' + parklocation)
       const parksJson = await parks.json();
-      // const userInput = 
-
-
-      console.log(parksJson, ' this is parks')
-      return parksJson
+      console.log(parksJson, ' this is parksJson')
+      this.setState({parks: parksJson.businesses})
     } catch(err) {
         console.log(err, 'error in catch block')
         return err 
     }
   }
 
+  // data and parksJson are the same thing, but different variables
 
 
   componentDidMount(){
-    this.getParks().then((data) => {
-      console.log(data, 'this is data in componentDidMount in App')
-      this.setState({parks: data.businesses})
-    });
+    this.getParks()
+    // .then((data) => {
+    //   console.log(data, 'this is data in componentDidMount in App')
+    //   this.setState({parks: data.businesses})
+    // });
   }
 
+
   handleChange = (e) => {
+    e.preventDefault()
     this.setState({
-      park: e.target.value
+      userLocation: e.target.value
     })
   }
 
@@ -51,14 +61,15 @@ class App extends Component {
 // try a ternary with parkslist -- only append if parkslist has values??
 
 // For search - need to set a default, get it to concatenate with api
+// Take user input, save as variable, then concatenate
   render() {
     return (
       <div className='app'>
 
-        <form className='search'>
+        <form className='search' onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} type='search' value={this.state.parks.location} placeholder='Enter City or Zip' />
+          <button>Search</button>
         </form>
-        <input type="submit" value="Fetch!"/>
 
 
         <div className='parkContainer'>
