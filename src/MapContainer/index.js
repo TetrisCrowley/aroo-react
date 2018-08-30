@@ -28,6 +28,10 @@ class MapContainer extends Component {
             lat: park.coordinates.latitude,
             lng: park.coordinates.longitude,
           }}
+          icon={{
+            url: 'https://cdn0.iconfinder.com/data/icons/dog-4/100/dog-06-512.png',
+            scaledSize: {width: 32, height: 32}
+          }}
         />
       )
     })
@@ -53,6 +57,13 @@ class MapContainer extends Component {
     );
   }
 }
+          // <InfoWindow
+            // marker={this.state.activeMarker}
+            // visible={this.state.showingInfoWindow}>
+            // <div>
+                // <h1>{this.state.selectedPlace.name}</h1>
+            // </div>
+          // </InfoWindow>
 
 export default GoogleApiWrapper({ 
   apiKey: ('AIzaSyBHLett8djBo62dDXj0EjCimF8Rd6E8cxg')
