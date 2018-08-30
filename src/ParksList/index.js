@@ -15,31 +15,18 @@ const ParksList = (props) => {
   })
   // parksList is now an array of JSX elements and can be rendered inside {} below
 
-  // noResults(props){
-  //   if(props.noResults){
-  //     return
-  //   }
-  // }
-
-
-  // const My404 = () => {
-  //   return (
-  //     <div>
-  //       You dun goofed
-  //     </div>
-  //   )
-  // }
-  //     <Route component={My404}/>
 
   return(
     <div className='results'>
       <h1>Dog parks in your area: </h1>
-      
-        {(props.parks.length === 0)
-        ? <h3>Sorry! No parks found. Please try again or enter a valid zip code</h3>
-        : <ol>{parksList}</ol>
-        }
-        
+      {(props.parks.length > 0)
+      ? <ol>{parksList}</ol>
+      : null
+      } 
+      {(props.showError === true && props.parks.length === 0)
+      ? <h3>Sorry! No parks found. Please try again or enter a valid zip code</h3>
+      : null
+      }
     </div>
   )
 }
