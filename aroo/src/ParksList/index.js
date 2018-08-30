@@ -32,18 +32,20 @@ const ParksList = (props) => {
   //     <Route component={My404}/>
 
   return(
-    <div id="results">
+    <div className='results'>
       <h1>Dog parks in your area: </h1>
-      <ol>
-        {parksList}
-      </ol>
-
+      
+        {(props.parks.length === 0)
+        ? <h3>Sorry! No parks found. Please try again or enter a valid zip code</h3>
+        : <ol>{parksList}</ol>
+        }
+        
     </div>
   )
 }
-      // <div id="error">
-        // <h3>Sorry! No parks found. Please try again or enter a valid zip code</h3>
-      // </div>
+    // ternary statement render below if props.parks.length is 0, otherwise, render above
+
+      
 
 
 export default ParksList

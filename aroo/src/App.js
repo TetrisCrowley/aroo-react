@@ -34,6 +34,7 @@ class App extends Component {
       const parks = await fetch('http://localhost:9000/parks/search/' + parklocation)
       const parksJson = await parks.json();
       console.log(parksJson, ' this is parksJson')
+      // Find new locations
       this.setState({
         parks: parksJson.businesses,
         lat: parksJson.businesses[0].coordinates.latitude,
@@ -76,9 +77,11 @@ class App extends Component {
           <button>Fetch!</button>
         </form>
 
+        <div className='disclaimer'>
+          <h4>When visiting your local dog park, please follow the posted rules. Each park's individually posted rules and regulations will help keep dog parks safe and open/available to all dogs.</h4>
+        </div>
 
         <div className='parkContainer'>
-          <h4>When visiting your local dog park, please follow the posted rules. Each park's individually posted rules and regulations will help keep dog parks safe and open/available to all dogs.</h4>
           <ParksList parks={this.state.parks} />
         </div>
 

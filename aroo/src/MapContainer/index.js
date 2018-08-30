@@ -29,11 +29,6 @@ class MapContainer extends Component {
             lng: park.coordinates.longitude,
           }}
         />
-          // {this.state.isOpen === i ?
-          //     <InfoWindow onCloseClick={this.handleToggleOpen}>
-          //         <h4>{event.name}</h4>
-          //     </InfoWindow> : null
-          // }
       )
     })
 
